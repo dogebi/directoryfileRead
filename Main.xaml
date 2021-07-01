@@ -1,6 +1,6 @@
-<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1307,1246" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
+<Activity mc:Ignorable="sap sap2010" x:Class="Main" mva:VisualBasic.Settings="{x:Null}" sap:VirtualizedContainerService.HintSize="1512,1933" sap2010:WorkflowViewState.IdRef="ActivityBuilder_1" xmlns="http://schemas.microsoft.com/netfx/2009/xaml/activities" xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" xmlns:mva="clr-namespace:Microsoft.VisualBasic.Activities;assembly=System.Activities" xmlns:sap="http://schemas.microsoft.com/netfx/2009/xaml/activities/presentation" xmlns:sap2010="http://schemas.microsoft.com/netfx/2010/xaml/activities/presentation" xmlns:scg="clr-namespace:System.Collections.Generic;assembly=mscorlib" xmlns:ui="http://schemas.uipath.com/workflow/activities" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml">
   <TextExpression.NamespacesForImplementation>
-    <scg:List x:TypeArguments="x:String" Capacity="54">
+    <scg:List x:TypeArguments="x:String" Capacity="60">
       <x:String>System.Activities</x:String>
       <x:String>System.Activities.Statements</x:String>
       <x:String>System.Activities.Expressions</x:String>
@@ -31,10 +31,12 @@
       <x:String>System.Runtime.Serialization</x:String>
       <x:String>System.Security</x:String>
       <x:String>UiPath.UIAutomationNext.Enums</x:String>
+      <x:String>System.Reflection</x:String>
+      <x:String>System.Runtime.InteropServices</x:String>
     </scg:List>
   </TextExpression.NamespacesForImplementation>
   <TextExpression.ReferencesForImplementation>
-    <scg:List x:TypeArguments="AssemblyReference" Capacity="36">
+    <scg:List x:TypeArguments="AssemblyReference" Capacity="31">
       <AssemblyReference>System.Activities</AssemblyReference>
       <AssemblyReference>Microsoft.VisualBasic</AssemblyReference>
       <AssemblyReference>mscorlib</AssemblyReference>
@@ -68,7 +70,7 @@
       <AssemblyReference>System.Runtime.WindowsRuntime</AssemblyReference>
     </scg:List>
   </TextExpression.ReferencesForImplementation>
-  <Sequence sap:VirtualizedContainerService.HintSize="938,1181" sap2010:WorkflowViewState.IdRef="Sequence_1">
+  <Sequence sap:VirtualizedContainerService.HintSize="1522,1868" sap2010:WorkflowViewState.IdRef="Sequence_1">
     <Sequence.Variables>
       <Variable x:TypeArguments="x:Boolean" Name="exitsFile" />
       <Variable x:TypeArguments="x:Int32" Name="num" />
@@ -79,15 +81,15 @@
         <x:Boolean x:Key="IsExpanded">True</x:Boolean>
       </scg:Dictionary>
     </sap:WorkflowViewStateService.ViewState>
-    <ui:InterruptibleDoWhile DisplayName="Do While" sap:VirtualizedContainerService.HintSize="896,1089" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
+    <ui:InterruptibleDoWhile DisplayName="Do While" sap:VirtualizedContainerService.HintSize="1480,1776" sap2010:WorkflowViewState.IdRef="InterruptibleDoWhile_1">
       <ui:InterruptibleDoWhile.Body>
-        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="860,920" sap2010:WorkflowViewState.IdRef="Sequence_2">
+        <Sequence DisplayName="Body" sap:VirtualizedContainerService.HintSize="1444,1607" sap2010:WorkflowViewState.IdRef="Sequence_2">
           <sap:WorkflowViewStateService.ViewState>
             <scg:Dictionary x:TypeArguments="x:String, x:Object">
               <x:Boolean x:Key="IsExpanded">True</x:Boolean>
             </scg:Dictionary>
           </sap:WorkflowViewStateService.ViewState>
-          <Assign sap:VirtualizedContainerService.HintSize="818,61" sap2010:WorkflowViewState.IdRef="Assign_1">
+          <Assign sap:VirtualizedContainerService.HintSize="1402,61" sap2010:WorkflowViewState.IdRef="Assign_1">
             <Assign.To>
               <OutArgument x:TypeArguments="x:Int32">[num]</OutArgument>
             </Assign.To>
@@ -95,13 +97,20 @@
               <InArgument x:TypeArguments="x:Int32">0</InArgument>
             </Assign.Value>
           </Assign>
-          <ui:PathExists DisplayName="Path Exists" Exists="[exitsFile]" sap:VirtualizedContainerService.HintSize="818,91" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="e:\cc.txt1" PathType="File" />
-          <If Condition="[exitsFile]" sap:VirtualizedContainerService.HintSize="818,596" sap2010:WorkflowViewState.IdRef="If_2">
+          <ui:PathExists sap2010:Annotation.AnnotationText="Step1,检查桌面上有没有CC.txt文件.&#xA;" DisplayName="Path Exists" Exists="[exitsFile]" sap:VirtualizedContainerService.HintSize="1402,137" sap2010:WorkflowViewState.IdRef="PathExists_1" Path="e:\cc.txt1" PathType="File">
+            <sap:WorkflowViewStateService.ViewState>
+              <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+              </scg:Dictionary>
+            </sap:WorkflowViewStateService.ViewState>
+          </ui:PathExists>
+          <If Condition="[exitsFile]" sap:VirtualizedContainerService.HintSize="1402,1237" sap2010:WorkflowViewState.IdRef="If_2">
             <If.Then>
-              <Sequence sap:VirtualizedContainerService.HintSize="426,435" sap2010:WorkflowViewState.IdRef="Sequence_8">
+              <Sequence sap2010:Annotation.AnnotationText="Step2:如果有,读取内容弹框显示,并结束程序" sap:VirtualizedContainerService.HintSize="426,466" sap2010:WorkflowViewState.IdRef="Sequence_8">
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
                 <ui:ReadTextFile Content="[OutTxt]" DisplayName="Read Text File" FileName="e:\cc.txt" sap:VirtualizedContainerService.HintSize="384,81" sap2010:WorkflowViewState.IdRef="ReadTextFile_1" />
@@ -135,29 +144,72 @@
               </Sequence>
             </If.Then>
             <If.Else>
-              <Sequence sap:VirtualizedContainerService.HintSize="347,410" sap2010:WorkflowViewState.IdRef="Sequence_5">
+              <Sequence sap2010:Annotation.AnnotationText="Step3:如果没有,过5秒重新确认并计数" sap:VirtualizedContainerService.HintSize="931,1076" sap2010:WorkflowViewState.IdRef="Sequence_5">
+                <Sequence.Variables>
+                  <Variable x:TypeArguments="x:Boolean" Name="retry" />
+                </Sequence.Variables>
                 <sap:WorkflowViewStateService.ViewState>
                   <scg:Dictionary x:TypeArguments="x:String, x:Object">
                     <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                    <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
                   </scg:Dictionary>
                 </sap:WorkflowViewStateService.ViewState>
-                <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="305,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
-                <Sequence sap:VirtualizedContainerService.HintSize="305,256" sap2010:WorkflowViewState.IdRef="Sequence_7">
+                <Delay Duration="00:00:05" sap:VirtualizedContainerService.HintSize="889,22" sap2010:WorkflowViewState.IdRef="Delay_1" />
+                <Sequence sap:VirtualizedContainerService.HintSize="889,891" sap2010:WorkflowViewState.IdRef="Sequence_7">
                   <sap:WorkflowViewStateService.ViewState>
                     <scg:Dictionary x:TypeArguments="x:String, x:Object">
                       <x:Boolean x:Key="IsExpanded">True</x:Boolean>
                       <x:Boolean x:Key="IsPinned">False</x:Boolean>
                     </scg:Dictionary>
                   </sap:WorkflowViewStateService.ViewState>
-                  <Assign sap:VirtualizedContainerService.HintSize="263,61" sap2010:WorkflowViewState.IdRef="Assign_2">
-                    <Assign.To>
-                      <OutArgument x:TypeArguments="x:Int32">[num]</OutArgument>
-                    </Assign.To>
-                    <Assign.Value>
-                      <InArgument x:TypeArguments="x:Int32">[num+1]</InArgument>
-                    </Assign.Value>
-                  </Assign>
-                  <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="263,63" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[num.ToString]" />
+                  <ui:PathExists sap2010:Annotation.AnnotationText="重新确认" DisplayName="Path Exists" Exists="[retry]" sap:VirtualizedContainerService.HintSize="847,122" sap2010:WorkflowViewState.IdRef="PathExists_2" Path="e:\cc.txt" PathType="File">
+                    <sap:WorkflowViewStateService.ViewState>
+                      <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                        <x:Boolean x:Key="IsAnnotationDocked">True</x:Boolean>
+                      </scg:Dictionary>
+                    </sap:WorkflowViewStateService.ViewState>
+                  </ui:PathExists>
+                  <If Condition="[retry]" sap:VirtualizedContainerService.HintSize="847,637" sap2010:WorkflowViewState.IdRef="If_4">
+                    <If.Then>
+                      <Sequence sap:VirtualizedContainerService.HintSize="426,476" sap2010:WorkflowViewState.IdRef="Sequence_11">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <ui:ReadTextFile Content="[OutTxt]" DisplayName="Read Text File" FileName="e:\cc.txt" sap:VirtualizedContainerService.HintSize="384,81" sap2010:WorkflowViewState.IdRef="ReadTextFile_2" />
+                        <ui:MessageBox Caption="{x:Null}" ChosenButton="{x:Null}" DisplayName="Message Box" sap:VirtualizedContainerService.HintSize="384,59" sap2010:WorkflowViewState.IdRef="MessageBox_2" Text="[OutTxt.ToString]" />
+                        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="384,63" sap2010:WorkflowViewState.IdRef="WriteLine_4" Text="retry proces" />
+                        <Assign sap:VirtualizedContainerService.HintSize="384,61" sap2010:WorkflowViewState.IdRef="Assign_5">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Boolean">[exitsFile]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Boolean">False</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                      </Sequence>
+                    </If.Then>
+                    <If.Else>
+                      <Sequence sap:VirtualizedContainerService.HintSize="376,391" sap2010:WorkflowViewState.IdRef="Sequence_10">
+                        <sap:WorkflowViewStateService.ViewState>
+                          <scg:Dictionary x:TypeArguments="x:String, x:Object">
+                            <x:Boolean x:Key="IsExpanded">True</x:Boolean>
+                          </scg:Dictionary>
+                        </sap:WorkflowViewStateService.ViewState>
+                        <Assign sap:VirtualizedContainerService.HintSize="334,61" sap2010:WorkflowViewState.IdRef="Assign_2">
+                          <Assign.To>
+                            <OutArgument x:TypeArguments="x:Int32">[num]</OutArgument>
+                          </Assign.To>
+                          <Assign.Value>
+                            <InArgument x:TypeArguments="x:Int32">[num+1]</InArgument>
+                          </Assign.Value>
+                        </Assign>
+                        <WriteLine DisplayName="Write Line" sap:VirtualizedContainerService.HintSize="334,63" sap2010:WorkflowViewState.IdRef="WriteLine_3" Text="[num.ToString]" />
+                        <ui:LogMessage DisplayName="Log Message" sap:VirtualizedContainerService.HintSize="334,95" sap2010:WorkflowViewState.IdRef="LogMessage_1" Level="Info" Message="[num.ToString]" />
+                      </Sequence>
+                    </If.Else>
+                  </If>
                 </Sequence>
               </Sequence>
             </If.Else>
